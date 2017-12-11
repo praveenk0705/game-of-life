@@ -2,7 +2,7 @@ package fi.pku.game;
 
 public class GOL {
 
-	  int columns =4, rows = 4 ;
+	  int columns =3, rows = 3 ;
 
 	  Cell[][] board;
 
@@ -43,17 +43,20 @@ public class GOL {
 	      for (int y = 0; y < rows; y++) {
 	    	  //System.out.println("+++++++++");
 	        int neighbors = 0;
-	        for (int i = -1; i <= 1; i++) {
-	          for (int j = -1; j <= 1; j++) {
-	            neighbors += board[(x+i+columns)%columns][(y+j+rows)%rows].previous;
-	            //System.out.println((x+i+columns)%columns);
+	        for (int row = x-1; row <= x+1; row++) {
+	          for (int col = y-1; col <= y+1; col++) {
+	        	  
+	        	  if( !(x == row &&  y == col) && row >=0 && col >=0 && row < rows && col < columns )
+	              {
+	                  /*System.out.println(board[row][col].previous);
+	                  System.out.println("====");*/
+	                  neighbors += board[row][col].previous;
+	              }
+	        	  
 	            
-            //System.out.println((y+j+rows)%rows);
-	           // System.out.println("========");
+	            
 	          }
 	        }
-
-	        neighbors -= board[x][y].previous;
 
 	        // Rules 
 	        if      ((board[x][y].state == 1) && (neighbors <  2)) board[x][y].newState(0);          
@@ -63,6 +66,14 @@ public class GOL {
 	      }
 	    }
 	  }
+	  
+
+      // the position of a cell that you want to display its neighbours
+      int posX = 0;
+      int posY = 0;
+
+  
+  
 
 	 public void display() {
 		  System.out.println("Updated Board");
