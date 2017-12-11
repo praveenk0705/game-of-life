@@ -41,7 +41,7 @@ public class GOL {
 	    //Loop through and check neighbors
 	     for (int x = 0; x < columns; x++) {
 	      for (int y = 0; y < rows; y++) {
-	    	  System.out.println("+++++++++");
+	    	  //System.out.println("+++++++++");
 	        int neighbors = 0;
 	        for (int i = -1; i <= 1; i++) {
 	          for (int j = -1; j <= 1; j++) {
